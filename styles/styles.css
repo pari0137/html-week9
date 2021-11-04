@@ -102,13 +102,19 @@ footer{
     font-size:0.7em;
 }
 
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
 /***********************************************************
 				    Hamburger Menu
 ***********************************************************/
 
 
 nav{
-    height:60px;
+    /*height:60px;*/
     position:relative;
 }
 
@@ -170,5 +176,44 @@ nav ul{
         max-width: 1024px;
         margin: 0 auto; /* this will center the container div once the browser window is larger than 
         the max width */
+    }
+
+    /* make the main and sidebar sections sit next to eachother */
+    main{
+        /*width: calc(70% - 40px);*/
+        width:70%;
+        box-sizing:border-box; /* accounts for the padding in the width */
+        float:left;
+    }
+
+    aside{
+        width:calc(30% - 40px);
+        float:right;
+    }
+
+    footer{
+        clear:both; /* make the footer see the floated elements and go below them */
+    }
+
+    .hamburger{
+        display:none;
+    }
+
+    nav ul{
+        display:block;
+    }
+
+    #menuchecker:checked + ul{
+        /* in case the menu is open when the site is resized, override the position on the menu */
+        position:static;
+    }
+
+    nav ul li{
+        float:left;
+        margin: 20px 10px 0px; /* 3 values - top, left/right, bottom */
+    }
+
+    nav ul li a{
+        text-decoration:none;
     }
 }
